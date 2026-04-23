@@ -1,7 +1,7 @@
 {
   "name": "sprint2-practico3",
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
+    "ejs": "^5.0.2",
     "express": "^5.2.1",
+    "express-validator": "^7.3.2",
     "mongoose": "^9.3.0"
   }
 }
