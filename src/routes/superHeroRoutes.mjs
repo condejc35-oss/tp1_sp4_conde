@@ -9,33 +9,59 @@ import {
     crearSuperheroeController,
     actualizarSuperheroeController,
     eliminarHeroeController,
-    eliminarPorNombreController
+    eliminarPorNombreController,
+    mostrarFormularioAgregarController,
+    agregarSuperheroeController,
+    mostrarFormularioEditarController,
+    editarSuperheroeController,
+    eliminarSuperheroeDesdeTableroController
 } from '../controllers/superheroesController.mjs';
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+    console.log(`Método: ${req.method} | Ruta: ${req.path}`);
+    next();
+});
+
+
+// ─────────
+// RUTAS GET
+// ─────────
+
+// Rutas fijas
 router.get('/heroes', obtenerTodosLosSuperheroresController);
+router.get('/heroes/agregar', mostrarFormularioAgregarController);
 router.get('/heroes/mayores-30', obtenerSuperheroesMayoresDe30Controller);
 router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
+
+
+// Rutas con parámetros dinámicos
+router.get('/heroes/:id/editar', mostrarFormularioEditarController);
 router.get('/heroes/:id', obtenerSuperheroePorIdController);
 
-////////////////
-//Nuevas rutas//
-/////TP1-S3/////
-////////////////
 
-//Crear nuevo superheroe
-router.post('superHeroe/name', validarSuperHeroe(), handleValidationErrors, crearSuperheroeController);
+// ──────────
+// RUTAS POST
+// ──────────
+router.post('/heroes/agregar', validarSuperHeroe(), handleValidationErrors, agregarSuperheroeController);
+router.post('/superHeroe', validarSuperHeroe(), handleValidationErrors, crearSuperheroeController);
 
-//Actualizar héroe y mostrar todos los héroes actualizados
+
+// ──────────
+// RUTAS PUT
+// ──────────
+router.put('/heroes/:id', validarSuperHeroe(), handleValidationErrors, editarSuperheroeController);
 router.put('/superHeroe/actualizar', actualizarSuperheroeController);
 
-//Eliminar héroe por nombre y mostrar eliminado
+
+// ────────────
+// RUTAS DELETE
+// ────────────
 router.delete('/superHeroe/nombre/:nombreSuperHeroe', eliminarPorNombreController);
-
-//Eliminar héroe y mostrar todos los héroes actualizados
 router.delete('/superHeroe/eliminar/:id', eliminarHeroeController);
-
+// Eliminar héroe por ID desde el dashboard
+router.delete('/heroes/:id', eliminarSuperheroeDesdeTableroController);
 
 
 export default router;

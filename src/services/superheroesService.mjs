@@ -22,8 +22,8 @@ export async function crearSuperheroe(datos) {
 }
 
 //Actualizar superhéroe
-export async function actualizarSuperheroe(nombreSuperHeroe) {
-    return await superHeroRepository.actualizarHeroe(nombreSuperHeroe);
+export async function actualizarSuperheroe(id, datos) {
+    return await superHeroRepository.actualizarHeroe(id, datos);
 }
 
 //Eliminar superhéroe por id en DB y mostrar todos actualizados

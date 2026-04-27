@@ -30,16 +30,18 @@ class SuperHeroRepository extends IRepository {
     }
 
     //Actualizar superhéroe y mostrar todos
-    async actualizarHeroe(nombreSuperHeroe) {
-        const result = await SuperHero.updateOne(
-            { nombreSuperHeroe: "Goku" },
-            { $set: { edad: 26 } });
-        return await SuperHero.find({});
+    async actualizarHeroe(id, datos) {
+        await SuperHero.findByIdAndUpdate(
+            id,
+            { $set: datos },
+            { new: true, runValidators: true }
+        );
+        return await SuperHero.findById(id);
     }
 
     //Borrar superhéroe por id de DB y mostrar lista actulalizada
     async eliminarHeroe(id) {
-        const result = await SuperHero.deleteOne({ _id: id });
+        const result = await SuperHero.findByIdAndDelete({ _id: id });
         return await SuperHero.find({});
     }
 
