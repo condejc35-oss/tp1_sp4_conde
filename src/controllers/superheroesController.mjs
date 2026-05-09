@@ -28,7 +28,7 @@ export async function obtenerTodosLosSuperheroresController(req, res) {
                 { mensaje: 'No se encontraron superhéroes' });
         }
         // Renderizar con dashboard.ejs pasándole el array de héroes
-        res.render('dashboard', { heroes });
+        res.render('dashboard', { heroes, title: 'Dashboard de Superhéroes' });
     } catch (error) {
         res.status(500).json(
             { mensaje: 'Error al obtener los superhéroes', error: error.message });
@@ -123,18 +123,19 @@ export async function eliminarPorNombreController(req, res) {
 
 // Mostrar formulario
 export async function mostrarFormularioAgregarController(req, res) {
-    res.render('addSuperhero', {
-        errors: [],
-        success: false,
-        nombreSuperHeroe: '',
-        nombreReal: '',
-        edad: '',
-        planetaOrigen: '',
-        poderes: '',
-        aliados: '',
-        enemigos: '',
-        creador: ''
-    });
+        res.render('addSuperhero', {
+            title: 'Agregar Superhéroe',
+            errors: [],
+            success: false,
+            nombreSuperHeroe: '',
+            nombreReal: '',
+            edad: '',
+            planetaOrigen: '',
+            poderes: '',
+            aliados: '',
+            enemigos: '',
+            creador: ''
+        });
 }
 
 // Procesar datos ingresados en el formulario y guardar en DB
@@ -185,6 +186,7 @@ export async function mostrarFormularioEditarController(req, res) {
             return res.status(404).send('Superhéroe no encontrado');
         }
         res.render('editSuperhero', {
+            title: 'Editar Superhéroe',
             hero,
             errors: [],
             success: false,

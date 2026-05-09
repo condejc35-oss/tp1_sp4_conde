@@ -1,78 +1,9 @@
-<%- include('partials/header', { title: 'Editar Superhéroe' }) %>
-
-<style>
-    h1 { color: #FF6500; margin-bottom: 8px; font-size: 1.8rem; }
-    .hero-id { font-size: 11px; color: #555; margin-bottom: 24px; }
-    .form-container {
-        max-width: 600px;
-        margin: 0 auto;
-        background: #16213e;
-        padding: 36px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-    .form-group { margin-bottom: 18px; }
-    label {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 13px;
-        color: #aaa;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    input {
-        width: 100%;
-        padding: 10px 14px;
-        background: #0f3460;
-        border: 1px solid #1a4a8a;
-        border-radius: 6px;
-        color: #eee;
-        font-size: 14px;
-        transition: border 0.2s;
-    }
-    input:focus { outline: none; border-color: #e67e22; }
-    button[type="submit"] {
-        width: 100%;
-        padding: 12px;
-        background: #e67e22;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.2s;
-        margin-top: 8px;
-    }
-    button[type="submit"]:hover { background: #e74c3c; }
-    .error {
-        background: rgba(231,76,60,0.15);
-        border: 1px solid #e74c3c;
-        color: #FF6500;
-        padding: 12px;
-        border-radius: 6px;
-        margin-bottom: 20px;
-        font-size: 14px;
-    }
-    .error ul { padding-left: 20px; margin-top: 6px; }
-    .back-link {
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-        color: #aaa;
-        text-decoration: none;
-        font-size: 14px;
-    }
-    .back-link:hover { color: #e67e22; }
-</style>
-
 <div class="form-container">
-
-    <h1>Editar Superhéroe</h1>
+    <h1 style="color:#e67e22;">Editar Superhéroe</h1>
     <p class="hero-id">ID: <%= hero._id %></p>
 
     <% if (errors && errors.length > 0) { %>
-        <div class="error">
+        <div class="alert-error">
             <strong>Corregí los siguientes errores:</strong>
             <ul>
                 <% errors.forEach(function(error) { %>
@@ -123,11 +54,10 @@
             <input type="text" name="creador"
                    value="<%= creador ? creador : '' %>"/>
         </div>
-        <button type="submit">Guardar Cambios</button>
+        <button type="submit" class="btn-warning" style="width:100%;padding:12px;font-size:16px;">
+            Guardar Cambios
+        </button>
     </form>
 
     <a href="/api/heroes" class="back-link">← Volver al Dashboard</a>
-
 </div>
-
-<%- include('partials/footer') %>

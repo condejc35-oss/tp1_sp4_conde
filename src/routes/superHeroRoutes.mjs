@@ -24,6 +24,10 @@ router.use((req, res, next) => {
     next();
 });
 
+// Página de inicio
+router.get('/', (req, res) => {
+    res.render('index', { title: 'Inicio' });
+});
 
 // ─────────
 // RUTAS GET

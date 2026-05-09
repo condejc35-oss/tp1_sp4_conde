@@ -1,0 +1,255 @@
+/* ── RESET & VARIABLES ── */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+:root {
+    --bg-dark: #05080a;
+    --bg-gradient: radial-gradient(circle at center, #1a2a44 0%, #05080a 100%);
+    --card-bg: rgba(22, 33, 62, 0.7); 
+    --accent-blue: #00d2ff;
+    --accent-red: #e94560;
+    --text-main: #e0e0e0;
+    --text-muted: #888;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ── LAYOUT GLOBAL ── */
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── COMPONENTES ATÓMICOS ── */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* ── NAVBAR (Estilo Tecnológico Ajustado) ── */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 52, 96, 0.9);
+    padding: 1rem 10%;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--accent-blue);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* logo */
+.navbar .logo {
+    height: 45px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px var(--accent-blue));
+    transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.05);
+}
+
+/* sin márgenes */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Selector enlaces */
+.navbar ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Control iconos SVG  */
+.navbar ul li a img {
+    width: 20px; 
+    height: 20px;
+}
+
+.navbar ul li a:hover { 
+    color: var(--accent-blue);
+    text-shadow: 0 0 10px var(--accent-blue);
+}
+
+.navbar ul li a:hover img {
+    filter: drop-shadow(0 0 5px var(--accent-blue));
+    transform: scale(1.1);
+}
+
+/* ── MAIN CONTAINER ── */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex: 1; /* footer hacia abajo */
+}
+
+/* ── TABLAS (Estilo Dashboard) ── */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* Efecto de filas separadas */
+}
+
+th {
+    padding: 15px;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+td {
+    background: var(--card-bg);
+    padding: 15px;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+td:first-child { border-left: 1px solid var(--glass-border); border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+td:last-child { border-right: 1px solid var(--glass-border); border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
+
+tr:hover td {
+    background: rgba(30, 144, 255, 0.1);
+    border-color: var(--accent-blue);
+    transition: 0.3s ease;
+}
+
+/* ── BOTONES ── */
+.btn-primary {
+    background: var(--accent-blue);
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: 0.3s;
+    border: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: #fff;
+    box-shadow: 0 0 20px var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: transparent;
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: var(--accent-red);
+    color: white;
+}
+
+/* ── FORMULARIOS ── */
+input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: white;
+    margin-top: 5px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+}
+
+/* ── CONTENEDOR DE ACCIONES ── */
+.acciones {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* botones de acción (unifica <a> y <button>) */
+.btn-warning, .btn-danger {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    min-width: 90px;
+}
+
+/* ── BOTÓN EDITAR (Naranja/Amarillo) ── */
+.btn-warning {
+    background-color: #ff9f43;
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: #e67e22;
+    transform: translateY(-1px);
+}
+
+/* ── BOTÓN ELIMINAR (Rojo) ── */
+.btn-danger {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    box-shadow: 0 4px 10px rgba(233, 69, 96, 0.3);
+}
+
+/* ── FOOTER ── */
+footer {
+    background: rgba(10, 14, 20, 0.9);
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
+}

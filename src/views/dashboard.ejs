@@ -1,99 +1,6 @@
-<%- include('partials/header', { title: 'Dashboard de Superhéroes' }) %>
-
-<style>
-    h1 { color: #D21312; margin-bottom: 20px; font-size: 2rem; }
-    .stats {
-        background: #16213e;
-        padding: 12px 20px;
-        border-radius: 8px;
-        margin-bottom: 24px;
-        font-size: 14px;
-        color: #FF6500;
-    }
-    .stats span { color: #FF6500; font-weight: bold; }
-    .header-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    .btn-agregar {
-        background-color: #D21312;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background 0.2s;
-    }
-    .btn-agregar:hover { background-color: #c73652; }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background: #16213e;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-    thead { background-color: #0f3460; }
-    th {
-        padding: 14px 16px;
-        text-align: left;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #FF6500;
-    }
-    td {
-        padding: 12px 16px;
-        border-bottom: 1px solid #0f3460;
-        font-size: 14px;
-        vertical-align: middle;
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background-color: #0f3460; transition: 0.2s; }
-    .badge {
-        display: inline-block;
-        background: #0f3460;
-        color: #7ec8e3;
-        padding: 3px 8px;
-        border-radius: 12px;
-        font-size: 12px;
-        margin: 2px;
-    }
-    .acciones { display: flex; gap: 8px; align-items: center; }
-    .btn-editar {
-        background: #e67e22;
-        color: white;
-        padding: 6px 14px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 13px;
-        transition: background 0.2s;
-    }
-    .btn-editar:hover { background: #d35400; }
-    .btn-eliminar {
-        background: #e74c3c;
-        color: white;
-        padding: 6px 14px;
-        border: none;
-        border-radius: 5px;
-        font-size: 13px;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
-    .btn-eliminar:hover { background: #c0392b; }
-    .empty {
-        text-align: center;
-        padding: 60px;
-        color: #aaa;
-        font-size: 18px;
-    }
-</style>
-
 <div class="header-actions">
-    <h1>Dashboard de Superhéroes</h1>
-    <a href="/api/heroes/agregar" class="btn-agregar">+ Agregar Héroe</a>
+    <h1 style="color:#e94560;">Dashboard de Superhéroes</h1>
+    <a href="/api/heroes/agregar" class="btn-primary">+ Agregar Héroe</a>
 </div>
 
 <div class="stats">
@@ -130,11 +37,12 @@
                 <td><%= hero.creador || '-' %></td>
                 <td>
                     <div class="acciones">
-                        <a href="/api/heroes/<%= hero._id %>/editar" class="btn-editar">Editar</a>
+                        <a href="/api/heroes/<%= hero._id %>/editar" class="btn-warning">Editar</a>
+
                         <form action="/api/heroes/<%= hero._id %>?_method=DELETE"
-                              method="POST"
-                              onsubmit="return confirm('¿Eliminar a <%= hero.nombreSuperHeroe %>?')">
-                            <button type="submit" class="btn-eliminar">Eliminar</button>
+                            method="POST"
+                            onsubmit="return confirm('¿Eliminar a <%= hero.nombreSuperHeroe %>?')">
+                            <button type="submit" class="btn-danger">Eliminar</button>
                         </form>
                     </div>
                 </td>
@@ -143,5 +51,3 @@
         </tbody>
     </table>
 <% } %>
-
-<%- include('partials/footer') %>
