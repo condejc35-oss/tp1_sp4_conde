@@ -60,6 +60,6 @@ app.use((req, res) => {
 });
 
 // Iniciar el servidor
-app.listen(PORT, '0.0.0.0' () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
