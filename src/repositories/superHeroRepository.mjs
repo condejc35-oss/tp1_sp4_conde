@@ -1,5 +1,5 @@
-import superHero from '../models/SuperHero.mjs';
-import SuperHero from '../models/SuperHero.mjs';
+import superHero from '../models/superHero.mjs';
+import SuperHero from '../models/superHero.mjs';
 import IRepository from './IRepository.mjs';
 
 class SuperHeroRepository extends IRepository {
